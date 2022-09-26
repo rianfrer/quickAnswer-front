@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FiMail, FiUnlock} from 'react-icons/fi';
+/*import React, { useState } from 'react';
+import { FiMail, FiUnlock } from 'react-icons/fi';
 import perfilImg from '../../src/LogoQuickAnswer.png';
 
 import LoginAcess from '../utils/LoginAcess';
@@ -32,7 +32,7 @@ function Login() {
         <div className="logon-container" >
             <section className="form">
 
-            <img src={perfilImg} alt="perfil"/>
+                <img src={perfilImg} alt="perfil" />
 
                 <form onSubmit={handleSubmit}>
                     <h1>Login</h1>
@@ -73,3 +73,4 @@ function Login() {
 }
 
 export default Login
+*/
