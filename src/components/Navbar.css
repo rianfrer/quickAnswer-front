@@ -5,7 +5,7 @@
 } */
 
 .nav-menu {
-    background-color: #0a125c;
+    background-color: #0c166f;
     width: 250px;
     height: 100vh;
     display: flex;
@@ -31,7 +31,7 @@
 .nav-text a {
     text-decoration: none;
     color: #f5f5f5;
-    font-size: 17px;
+    font-size: 16px;
     width: 95%;
     height: 90%;
     display: flex;
@@ -41,7 +41,7 @@
 }
 
 .nav-text a:hover{
-    background-color:#242b68;
+    background-color:#2d3581;
 }
 
 .nav-menu-items {

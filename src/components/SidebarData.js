@@ -1,7 +1,9 @@
 import React from "react";
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
-import * as IoIcons from "react-icons/io"
+import * as BiIcons from "react-icons/bi";
+import * as BsIcons from "react-icons/bs";
+
 
 export const SidebarData = [
     {
@@ -13,31 +15,43 @@ export const SidebarData = [
     {
         title: 'Conversas',
         path: '/conversas',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <FaIcons.FaCommentDots />,
         cName: 'nav-text'
     },
     {
         title: 'Agendamentos',
         path: '/agendamentos',
-        icon: <FaIcons.FaCartPlus />,
+        icon: <FaIcons.FaRegCalendarCheck />,
         cName: 'nav-text'
     },
     {
-        title: 'Team',
-        path: '/team',
-        icon: <IoIcons.IoMdPeople />,
+        title: 'Cadastro de negóico',
+        path: '/cadastroNegocio',
+        icon: <FaIcons.FaClipboardList />,
         cName: 'nav-text'
     },
     {
-        title: 'Messages',
-        path: '/messages',
-        icon: <FaIcons.FaEnvelopeOpenText />,
+        title: 'Cadastro de produtos',
+        path: '/cadastroProdutos',
+        icon: <BsIcons.BsFillCartPlusFill />,
         cName: 'nav-text'
     },
     {
-        title: 'Support',
-        path: '/support',
-        icon: <IoIcons.IoMdHelpCircle />,
+        title: 'Quadro de atividades',
+        path: '/quadroAtividades',
+        icon: <FaIcons.FaRegChartBar />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Configurações',
+        path: '/configuracoes',
+        icon: <BiIcons.BiCog />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Sair',
+        path: '/sair',
+        icon: <FaIcons.FaRegArrowAltCircleLeft />,
         cName: 'nav-text'
     }
 ]
