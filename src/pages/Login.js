@@ -1,5 +1,4 @@
-/*import React, { useState } from 'react';
-import { FiMail, FiUnlock } from 'react-icons/fi';
+import React, { useState } from 'react';
 import perfilImg from '../../src/LogoQuickAnswer.png';
 
 import LoginAcess from '../utils/LoginAcess';
@@ -35,10 +34,8 @@ function Login() {
                 <img src={perfilImg} alt="perfil" />
 
                 <form onSubmit={handleSubmit}>
-                    <h1>Login</h1>
-                    <h1>
-                        <FiMail className="fiIcons" size={24} color="#f3403b" />
-                    </h1>
+                    <h1>Email</h1>
+                   
                     <input
                         type="email"
                         placeholder="Digite seu e-mail"
@@ -48,9 +45,7 @@ function Login() {
                         required
                     />
                     <h1>Senha</h1>
-                    <h1>
-                        <FiUnlock className="fiIcons" size={24} color="#f3403b" />
-                    </h1>
+                   
                     <input
                         type="password"
                         placeholder="Digite sua senha"
@@ -59,12 +54,9 @@ function Login() {
                         onChange={event => setPassword(event.target.value)}
                         required
                     />
-
-                    <input type="checkbox" name="Register" />
-                    <a href="/" >Relembrar cadastro</a>
-
-                    <a href="/" className="ultimo">Esqueci a senha</a>
                     <button className="button" type="submit">Entrar</button>
+                    <a href="/" >Não tem uma conta?</a>
+                    <a href="/" >Esqueci a senha?</a>
                 </form>
 
             </section>
@@ -73,4 +65,3 @@ function Login() {
 }
 
 export default Login
-*/
