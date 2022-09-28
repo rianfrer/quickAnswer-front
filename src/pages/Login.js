@@ -34,9 +34,10 @@ function Login() {
                 <img src={perfilImg} alt="perfil" />
 
                 <h1>Login</h1>
+                <p>Entre com o seu email e sua senha abaixo</p>
 
                 <form onSubmit={handleSubmit}>
-                    <label>Email</label>
+                    <label>EMAIL</label>
                    
                     <input
                         type="email"
@@ -46,7 +47,7 @@ function Login() {
                         onChange={event => setEmail(event.target.value)}
                         required
                     />
-                    <label>Senha</label>
+                    <label>SENHA</label>
                    
                     <input
                         type="password"
