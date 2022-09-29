@@ -1,0 +1,10 @@
+.tabela {
+    padding-top: 2%;
+    padding-left: 20%;
+    display: flex;
+}
+.nav{
+    padding-top: 5%;
+    padding-left: 20%;
+    display: flex;
+}
