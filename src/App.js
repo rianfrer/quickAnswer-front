@@ -7,8 +7,6 @@ import Conversas from './pages/Conversas'
 
 function App() {
 
-
-
   return (
     <>
       <Router>
