@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
 
-body {
-    background-color: #0C1674;
-}
-
-input,
-button {
+.inputLogin,
+.button {
     font: 400 16px Mulish, sans-serif;
 }
 
-button {
+.button {
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -23,18 +19,18 @@ button {
     border: none;
 }
 
-button:hover {
+.button:hover {
     background-color: #7442d8;
 }
 
-a {
+.linkLogin {
     font-size: 12px;
     color: rgb(148, 146, 146);
     padding: 0 10px;
     text-decoration: none;
 }
 
-form .inputLogin {
+.form .inputLogin {
     width: 100%;
     height: 40px;
     border: 2px solid #ececee;
@@ -48,11 +44,13 @@ form .inputLogin {
 }
 
 .logon-container {
-    background-color: #fff;
+    background-color: #ffffff;
     width: 25%;
-    height: 550px;
+    height: 600px;
     margin: 82px auto;
     border-radius: 10px;
+    border-style: outset;
+    border-color: #0c166f;
     display: flex;
     align-items: center;
     justify-content: center;

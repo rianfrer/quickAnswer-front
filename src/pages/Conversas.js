@@ -1,10 +1,13 @@
 import React from "react";
 import { ChatEngine } from 'react-chat-engine'
 import '../styles/Conversas.css';
+import Navbar from '../components/Navbar'
+
 
 function Conversas() {
     return (
         <>
+        <Navbar />
             <div>
                 <ChatEngine
                     height="100vh"

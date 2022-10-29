@@ -1,10 +1,14 @@
 import React from "react";
+import Navbar from '../components/Navbar';
 
 function Inicio() {
     return (
-        <div className='inicio'>
-            <h1>Início</h1>
-        </div>
+        <>
+            <Navbar />
+            <div className='inicio'>
+                <h1>Início</h1>
+            </div>
+        </>
     )
 }
 
