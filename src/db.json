@@ -1,9 +1,40 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
+    "agendamentos": [
+      {
+        "_id": "8",
+        "_rev": "1-50dad79f2063b4de576f9fafa2fa9175",
+        "conversation_id": "518d9bd5-989b-41ed-bd83-b95bd5f067b2",
+        "request_timestamp": "2022-12-12T22:51:28.805Z",
+        "user_confirma_agendamento": "sim",
+        "user_date": "2022-12-17",
+        "user_name": "Rian",
+        "user_selecao_categoria": "Categoria: Cabelo",
+        "user_selecao_servico2": "corte",
+        "user_time": "19:00:00"
+      },
+      {
+        "_id": "1",
+        "_rev": "47-76ea8c6bc1716792441db3a5a164c715",
+        "conversation_id": "4835ebf1-e131-4427-a8bc-39143016f275",
+        "request_timestamp": "2022-12-06T03:39:49.522Z",
+        "user_confirma_agendamento": "sim",
+        "user_date": "2022-12-07",
+        "user_name": "Paulo",
+        "user_selecao_categoria": "Categoria: Cabelo",
+        "user_selecao_servico2": "penteado",
+        "user_time": "12:00:00"
+      },
+      {
+        "_id": "3",
+        "_rev": "33-7eca4c68d6a015b854a9b17e2b17cc02",
+        "conversation_id": "870e2bfa-9a99-4222-9ef9-1fdb23e28754",
+        "request_timestamp": "2022-12-08T03:20:53.634Z",
+        "user_confirma_agendamento": "sim",
+        "user_date": "2022-12-11",
+        "user_name": "Teste0812",
+        "user_selecao_categoria": "Categoria: Cabelo",
+        "user_selecao_servico2": "corte",
+        "user_time": "12:00:00"
+      }
+    ]
   }
