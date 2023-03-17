@@ -26,3 +26,7 @@
     width: 85vw !important;
     background-origin: border-box;
 }
+
+.btn {
+    margin-left: 14vw;
+}
