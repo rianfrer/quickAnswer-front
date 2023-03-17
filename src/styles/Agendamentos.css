@@ -7,7 +7,10 @@
 /* --------------------------- Header --------------------------- */
 
 #navAgend {
-    width: 100%;
+    margin-top: 5vh;
+    margin-left: 14vw;
+    margin-bottom: 5vh;
+    width: 85vw;
     height: 15vh;
     background-color: #0C1674;
     color: white;
@@ -15,95 +18,15 @@
     font-family: Ubuntu;
     text-align: center;
     line-height: 14vh;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
-/* --------------------------- Form --------------------------- */
-
-#input-data {
-    width: 78vw;
-    margin: 0 auto;
-    margin-top: 5vh;
-    display: flex;
+.table{
+    margin-left: 14vw;
+    width: 85vw !important;
+    background-origin: border-box;
 }
 
-.input-text {
-    flex: 1;
-    min-width: 210px;
-    margin: 5px;
-    height: 35px;
-    padding-left: 5px;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #262626;
-    transition: 0.25s;
-    outline: none;
-}
-
-.input-btn {
-    flex: 1;
-    margin: 5px;
-    height: 39px;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #262626;
-    cursor: pointer;
-    transition: 0.3s all ease;
-}
-
-.input-btn:hover {
-    background-color: #383838;
-    border-color: #383838;
-    color: white;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
-}
-
-/* --------------------------- Table --------------------------- */
-
-#myTable {
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 5vh;
-}
-
-#myTable th {
-    background-color: #0C1674;
-    padding: 10px;
-    color: white;
-    font-weight: 100;
-    border-radius: 10px;
-}
-
-#myTable td,
-th {
-    padding: 10px;
-}
-
-#myTable td {
-    padding: 5px;
-}
-
-#myTable tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-#myTable tr:hover {
-    background-color: #ddd;
-}
-
-.remove-btn {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    border-width: 0px;
-    background-color: transparent;
-    cursor: pointer;
+.btn {
+    margin-left: 14vw;
 }
