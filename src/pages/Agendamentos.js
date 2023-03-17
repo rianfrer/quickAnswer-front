@@ -1,61 +1,56 @@
-import React, { Component } from "react";
-import dataBase from '../utils/DataBase';
 import '../styles/Agendamentos.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
+
 import Navbar from '../components/Navbar';
 
+function Agendamentos() {
 
-class Agendamentos extends Component {
+    const [data, setData] = useState(['']);
 
-    state = {
-        agendamentos: [],
-    }
+    useEffect(() => {
+        axios.get('https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/_all_docs')
+            .then(response => setData(response.data))
+            .catch(error => console.log(error))
+    }, []);
 
-    async componentDidMount() {
-        const response = await dataBase.get('');
+    return (
+        <>
+            <Navbar />
+            <Table striped bordered hover>
+                <thead>
+                    <tr> 
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data do agendamento</th>
+                        <th>Categoria</th>
+                        <th>Serviço</th>
+                        <th>Hora</th>
+                        <th>Confirmado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item._id}</td>
+                            <td>{item.user_name}</td>
+                            <td>{item.user_date}</td>
+                            <td>{item.user_selecao_categoria}</td>
+                            <td>{item.user_selecao_servico2}</td>
+                            <td>{item.user_time}</td>
+                            <td>{item.user_confirma_agendamento}</td>
 
-        console.log(response.data);
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
 
-        this.setState({ agendamentos: response.data })
-    }
+        </>
 
-    render() {
-
-        const { agendamentos } = this.state;
-
-        return (
-            <>
-                <Navbar />
-                <div className="tabela">
-                    <body>
-                        <div id="navAgend">
-                            Agendamentos
-                        </div>
-                        <section id="table">
-                            <form >
-                                <div id="input-data">
-                                    <input id="name" class="input-text" placeholder="Nome do cliente" type="text" required />
-                                    <input id="status" class="input-text" placeholder="Status" type="text" />
-                                    <input id="data" class="input-text" placeholder="Data do atendimento"  type="data" />
-                                    <input class="input-btn" type="submit" value="Enviar" />
-                                </div>
-                            </form>
-                            <table id="myTable">
-                                <tr id="0">
-                                    <th>Id</th>
-                                    <th>Nome</th>
-                                    <th>Horario</th>
-                                    <th>Categoria</th>
-                                    <th>Servico</th>
-                                    <th>Status</th>
-                                </tr>
-                            </table>
-                        </section>
-                    </body>
-                </div>
-            </>
-
-        )
-    }
+    )
 }
 
-export default Agendamentos
+export default Agendamentos;
