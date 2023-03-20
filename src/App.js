@@ -12,10 +12,10 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' exact element={<Inicio />}></Route>
+          <Route path='/' exact element={<Login />}></Route>
           <Route path='/agendamentos' element={<Agendamentos />}></Route>
           <Route path='/conversas' element={<Conversas />}></Route>
-          <Route path='/login' element={<Login />}></Route>
+          <Route path='/inicio' element={<Inicio />}></Route>
         </Routes>
       </Router>
     </>

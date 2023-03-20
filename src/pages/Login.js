@@ -1,71 +1,65 @@
-import React, { useState } from 'react';
-import perfilImg from '../../src/LogoQuickAnswer.png';
-
-import LoginAcess from '../utils/LoginAcess';
-
 import '../styles/Login.css';
+
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
+import perfilImg from '../../src/LogoQuickAnswer.png';
+import LoginAcess from '../utils/LoginAcess';
 
 function Login() {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [login, setLogin] = useState('');
+    const [senha, setSenha] = useState('');
 
 
     function handleSubmit(event) {
         event.preventDefault();
-
         const data = {
-            email,
-            password
+            login,
+            senha
         }
 
-        if (data.email === LoginAcess.email && data.password === LoginAcess.password) {
-            alert(`Access Permitido! Seja bem vindo ` + data.email);
+        if (data.login === LoginAcess.login && data.senha === LoginAcess.senha) {
+            alert(`Access Permitido! Seja bem vindo ` + LoginAcess.nome);
         } else {
             alert("Access Negado, tente novamente ou crie outra conta")
         }
+    }
 
+    function settarLogin(event) {
+        setLogin(event.target.value);
+      }
+
+    function settarSenha(event) {
+        setSenha(event.target.value);
     }
 
     return (
-        <div className='body'>
-            <div className="logon-container" >
-                <section className="form">
+        <div className='bodyLogin'>
+            <section className="sectionLogin">
 
-                    <img src={perfilImg} alt="perfil" />
+                <img className='logoLogin' src={perfilImg} alt="perfil" />
+                <div className='cabecalhoLogin'>
+                    <h1>Faça seu login</h1>
+                    <p>Entre com o seu login e sua senha abaixo</p>
+                </div>
+                <Form className='formLogin'>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Control type="email" placeholder="Login" value={login} onChange={settarLogin}/>
+                    
+                    </Form.Group>
 
-                    <h1>Login</h1>
-                    <p>Entre com o seu email e sua senha abaixo</p>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control type="password" placeholder="Senha" value={senha} onChange={settarSenha}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    </Form.Group>
+                        <Button variant="primary" type="submit" onClick={handleSubmit}>Entrar</Button>
+                </Form>
 
-                    <form onSubmit={handleSubmit}>
-                        <label>EMAIL</label>
-
-                        <input
-                            type="email"
-                            placeholder="Digite seu e-mail"
-                            className="inputLogin"
-                            value={email}
-                            onChange={event => setEmail(event.target.value)}
-                            required
-                        />
-                        <label>SENHA</label>
-
-                        <input
-                            type="password"
-                            placeholder="Digite sua senha"
-                            className="inputLogin"
-                            value={password}
-                            onChange={event => setPassword(event.target.value)}
-                            required
-                        />
-                        <button className="button" type="submit">Entrar</button>
-                        <a className='linkLogin' href="/" >Não tem uma conta?</a>
-                        <a className='linkLogin' href="/" >Esqueci a senha?</a>
-                    </form>
-
-                </section>
-            </div >
-        </div>
+            </section>
+        </div >
     )
 }
 

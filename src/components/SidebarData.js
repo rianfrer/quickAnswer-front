@@ -50,7 +50,7 @@ export const SidebarData = [
     },
     {
         title: 'Sair',
-        path: '/sair',
+        path: '/',
         icon: <FaIcons.FaRegArrowAltCircleLeft />,
         cName: 'nav-text'
     }

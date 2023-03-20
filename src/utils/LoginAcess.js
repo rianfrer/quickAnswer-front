@@ -1,7 +1,7 @@
 const LoginAcess = {
-    nome: "Daniel",
-    email: "daniel@quickanswer.com.br",
-    password: "123456"
+    nome: "Daniel Gonçalves",
+    login: "daniel",
+    senha: "123"
   }
   
   export default LoginAcess;
