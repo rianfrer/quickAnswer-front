@@ -21,12 +21,21 @@
     border-radius: 20px;
 }
 
-.table{
+.cabecalho h1{
+    /* border: solid red; */
+    margin: 5vh 0 6vh 14vw;
+}
+
+.table {
     margin-left: 14vw;
     width: 85vw !important;
     background-origin: border-box;
 }
 
 .btn {
-    margin-left: 14vw;
+    margin-top: 3vh;
+}
+
+.filtro {
+    margin: 5vh 0 2vh 14vw;
 }

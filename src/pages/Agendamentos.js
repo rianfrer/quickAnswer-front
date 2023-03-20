@@ -1,25 +1,65 @@
 import '../styles/Agendamentos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Alert, Table } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
 import Navbar from '../components/Navbar';
 
 function Agendamentos() {
 
-    const [data, setData] = useState(['']);
+    var [id, setId] = useState('');
+    const [data, setData] = useState({});
+    const [date, setDate] = useState('');
 
-    useEffect(() => {
-        axios.get('https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/_all_docs')
-            .then(response => setData(response.data))
-            .catch(error => console.log(error))
-    }, []);
+    function settarData(event) {
+        setDate(event.target.value);
+      }
+
+    function settarID(event) {
+        setId(event.target.value);
+    }
+
+//https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/_all_docs
+
+    function pesquisar(){
+        if (id == '') {
+            console.log("CODIGO não foi preenchido");
+            alert("Você deve preencher o código para a pesquisa")
+        }else{
+            fetch("https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/" + id)
+                .then((res) => res.json())
+                .then((dadosApi) => setData(dadosApi))
+                .catch((erro) => console.log(erro));
+            console.log("Pesquisa realizada com sucesso " + id)
+        }
+    }
 
     return (
         <>
             <Navbar />
+            <div className='cabecalho'>
+                <h1>Agendamentos</h1>
+            </div>
+            <Form className='filtro'>
+                <Row>
+                    <Col>
+                        <Form.Label>CÓDIGO DO AGENDAMENTO</Form.Label>
+                        <Form.Control placeholder="Código do agendamento" value={id} onChange={settarID} />
+                    </Col>
+                    <Col>
+                        <Form.Label>DATA DE AGENDAMENTO</Form.Label>
+                        <Form.Control value={date} type="date" onChange={settarData}/>
+                    </Col>
+                    <Col>
+                        <Button variant="primary" onClick={pesquisar}>Pesquisar</Button>
+                    </Col>
+                </Row>
+            </Form>
             <Table striped bordered hover>
                 <thead>
                     <tr> 
@@ -33,18 +73,15 @@ function Agendamentos() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item._id}</td>
-                            <td>{item.user_name}</td>
-                            <td>{item.user_date}</td>
-                            <td>{item.user_selecao_categoria}</td>
-                            <td>{item.user_selecao_servico2}</td>
-                            <td>{item.user_time}</td>
-                            <td>{item.user_confirma_agendamento}</td>
-
+                    <tr key={data.id}>
+                            <td>{data._id}</td>
+                            <td>{data.user_name}</td>
+                            <td>{data.user_date}</td>
+                            <td>{data.user_selecao_categoria}</td>
+                            <td>{data.user_selecao_servico2}</td>
+                            <td>{data.user_time}</td>
+                            <td>{data.user_confirma_agendamento}</td>
                         </tr>
-                    ))}
                 </tbody>
             </Table>
 
