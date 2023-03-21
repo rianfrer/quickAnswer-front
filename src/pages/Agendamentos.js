@@ -26,12 +26,27 @@ function Agendamentos() {
 
 //https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/_all_docs
 
+//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?_id=1
+
+//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=2023-03-03
+
+//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?rows=total_rows
+
     function pesquisar(){
         if (id == '') {
-            console.log("CODIGO não foi preenchido");
-            alert("Você deve preencher o código para a pesquisa")
-        }else{
-            fetch("https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/" + id)
+            fetch("//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=" + date)
+                .then((res) => res.json())
+                .then((dadosApi) => setData(dadosApi.filtro_data))
+                .catch((erro) => console.log(erro));
+            console.log("Pesquisa realizada com sucesso " + id)
+        } else if (date == '') {
+            fetch("//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?_id=" + id)
+                .then((res) => res.json())
+                .then((dadosApi) => setData(dadosApi))
+                .catch((erro) => console.log(erro));
+            console.log("Pesquisa realizada com sucesso " + id)
+        } else{
+            fetch("https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?rows=total_rows")
                 .then((res) => res.json())
                 .then((dadosApi) => setData(dadosApi))
                 .catch((erro) => console.log(erro));
@@ -42,10 +57,10 @@ function Agendamentos() {
     return (
         <>
             <Navbar />
-            <div className='cabecalho'>
+            <div className='cabecalhoAg'>
                 <h1>Agendamentos</h1>
             </div>
-            <Form className='filtro'>
+            <Form className='filtroAg'>
                 <Row>
                     <Col>
                         <Form.Label>CÓDIGO DO AGENDAMENTO</Form.Label>
@@ -69,6 +84,8 @@ function Agendamentos() {
                         <th>Categoria</th>
                         <th>Serviço</th>
                         <th>Hora</th>
+                        <th>Origem</th>
+                        <th>Canal de prospecção</th>
                         <th>Confirmado</th>
                     </tr>
                 </thead>
@@ -79,6 +96,8 @@ function Agendamentos() {
                             <td>{data.user_date}</td>
                             <td>{data.user_selecao_categoria}</td>
                             <td>{data.user_selecao_servico2}</td>
+                            <td>{data.origem}</td>
+                            <td>{data.channel}</td>
                             <td>{data.user_time}</td>
                             <td>{data.user_confirma_agendamento}</td>
                         </tr>

@@ -21,7 +21,7 @@
     border-radius: 20px;
 }
 
-.cabecalho h1{
+.cabecalhoAg h1{
     /* border: solid red; */
     margin: 5vh 0 6vh 14vw;
 }
@@ -36,6 +36,6 @@
     margin-top: 3vh;
 }
 
-.filtro {
+.filtroAg {
     margin: 5vh 0 2vh 14vw;
 }
