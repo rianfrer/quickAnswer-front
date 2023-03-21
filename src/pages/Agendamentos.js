@@ -91,3 +91,33 @@ function Agendamentos() {
 }
 
 export default Agendamentos;
+
+
+
+
+/* const axios = require('axios');
+
+// configura a URL da API e a chave da API
+const apiUrl = 'https://exemplo.com/api';
+const apiKey = 'sua_chave_de_api';
+
+// configura as opções da requisição
+const options = {
+  headers: {
+    'Authorization': `Bearer ${apiKey}`,
+    'Content-Type': 'application/json'
+  },
+  data: {
+    chave1: 'valor1',
+    chave2: 'valor2'
+  }
+};
+
+// faz a requisição HTTP POST para a API
+axios.post(apiUrl, options)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error(error);
+  }); */
