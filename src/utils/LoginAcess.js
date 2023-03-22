@@ -1,7 +1,7 @@
 const LoginAcess = {
-    nome: "Daniel Gonçalves",
-    login: "daniel",
-    senha: "123"
+    nome: "SENHOR",
+    login: "admin",
+    senha: "admin"
   }
   
   export default LoginAcess;

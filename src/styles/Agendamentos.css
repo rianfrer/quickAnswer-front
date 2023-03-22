@@ -8,9 +8,9 @@
 
 #navAgend {
     margin-top: 5vh;
-    margin-left: 14vw;
+    margin-left: 14%;
     margin-bottom: 5vh;
-    width: 85vw;
+    width: 85%;
     height: 15vh;
     background-color: #0C1674;
     color: white;
@@ -23,19 +23,19 @@
 
 .cabecalhoAg h1{
     /* border: solid red; */
-    margin: 5vh 0 6vh 14vw;
+    margin: 5vh 0 6vh 20%;
 }
 
 .table {
-    margin-left: 14vw;
-    width: 85vw !important;
+    margin-left: 20%;
+    width: 75% !important;
     background-origin: border-box;
 }
 
 .btn {
-    margin-top: 3vh;
+    margin-top: 8%;
 }
 
 .filtroAg {
-    margin: 5vh 0 2vh 14vw;
+    margin: 5vh 0 2vh 20%;
 }

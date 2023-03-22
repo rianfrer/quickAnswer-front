@@ -19,9 +19,9 @@ function Login() {
             login,
             senha
         }
-
         if (data.login === LoginAcess.login && data.senha === LoginAcess.senha) {
             alert(`Access Permitido! Seja bem vindo ` + LoginAcess.nome);
+            window.location.href = '/inicio';
         } else {
             alert("Access Negado, tente novamente ou crie outra conta")
         }

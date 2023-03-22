@@ -13,7 +13,7 @@ import Navbar from '../components/Navbar';
 function Agendamentos() {
 
     var [id, setId] = useState('');
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
     const [date, setDate] = useState('');
 
     function settarData(event) {
@@ -34,13 +34,13 @@ function Agendamentos() {
 
     function pesquisar(){
         if (id == '') {
-            fetch("//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=" + date)
+            fetch("https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=" + date)
                 .then((res) => res.json())
-                .then((dadosApi) => setData(dadosApi.filtro_data))
+                .then((dadosApi) => setData(dadosApi))
                 .catch((erro) => console.log(erro));
             console.log("Pesquisa realizada com sucesso " + id)
         } else if (date == '') {
-            fetch("//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?_id=" + id)
+            fetch("https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/" + id)
                 .then((res) => res.json())
                 .then((dadosApi) => setData(dadosApi))
                 .catch((erro) => console.log(erro));
@@ -96,9 +96,9 @@ function Agendamentos() {
                             <td>{data.user_date}</td>
                             <td>{data.user_selecao_categoria}</td>
                             <td>{data.user_selecao_servico2}</td>
+                            <td>{data.user_time}</td>◘
                             <td>{data.origem}</td>
                             <td>{data.channel}</td>
-                            <td>{data.user_time}</td>
                             <td>{data.user_confirma_agendamento}</td>
                         </tr>
                 </tbody>
