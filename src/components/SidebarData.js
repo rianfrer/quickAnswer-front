@@ -25,24 +25,6 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Cadastro de negóico',
-        path: '/cadastroNegocio',
-        icon: <FaIcons.FaClipboardList />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Cadastro de produtos',
-        path: '/cadastroProdutos',
-        icon: <BsIcons.BsFillCartPlusFill />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Quadro de atividades',
-        path: '/quadroAtividades',
-        icon: <FaIcons.FaRegChartBar />,
-        cName: 'nav-text'
-    },
-    {
         title: 'Configurações',
         path: '/configuracoes',
         icon: <BiIcons.BiCog />,

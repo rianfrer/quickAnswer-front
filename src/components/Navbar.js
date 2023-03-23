@@ -4,12 +4,14 @@ import { SidebarData } from './SidebarData'
 import '../styles/Navbar.css'
 import { IconContext } from 'react-icons'
 import perfilImg from '../../src/LogoQuickAnswer.png';
+import Cabecalho from './Cabecalho'
 
 
 function Navbar() {
 
     return (
         <>
+            <Cabecalho/>
             <IconContext.Provider value={{ color: '#fff' }}>
                 <nav className={'nav-menu active'}>
                     <ul className='nav-menu-items'>

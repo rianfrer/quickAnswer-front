@@ -44,6 +44,7 @@ function Agendamentos() {
                 .then((res) => res.json())
                 .then((dadosApi) => setData(dadosApi))
                 .catch((erro) => console.log(erro));
+                console.log(data);
             console.log("Pesquisa realizada com sucesso " + id)
         } else{
             fetch("https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?rows=total_rows")
@@ -78,7 +79,7 @@ function Agendamentos() {
             <Table striped bordered hover>
                 <thead>
                     <tr> 
-                        <th>ID</th>
+                    <th>ID</th>
                         <th>Nome</th>
                         <th>Data do agendamento</th>
                         <th>Categoria</th>
@@ -91,12 +92,12 @@ function Agendamentos() {
                 </thead>
                 <tbody>
                     <tr key={data.id}>
-                            <td>{data._id}</td>
+                    <td>{data._id}</td>
                             <td>{data.user_name}</td>
                             <td>{data.user_date}</td>
                             <td>{data.user_selecao_categoria}</td>
                             <td>{data.user_selecao_servico2}</td>
-                            <td>{data.user_time}</td>◘
+                            <td>{data.user_time}</td>
                             <td>{data.origem}</td>
                             <td>{data.channel}</td>
                             <td>{data.user_confirma_agendamento}</td>

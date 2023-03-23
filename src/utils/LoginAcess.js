@@ -1,5 +1,5 @@
 const LoginAcess = {
-    nome: "SENHOR",
+    nome: "Admin",
     login: "admin",
     senha: "admin"
   }
