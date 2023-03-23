@@ -17,21 +17,21 @@ function Inicio() {
                     <Carousel.Item>
                         <img
                             className="img1"
-                            src={require('../1.png')}
+                            src={require('../2.png')}
                             alt="Primeiro slide"
                         />
                         <Carousel.Caption>
-                            <h3 className="h3Inicio">Seu negócio mais prático.</h3>
+                            <h3 className="h3Inicio">Não se preocupe com atendimentos.</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item >
                         <img
                             className="img2"
-                            src={require('../2.png')}
+                            src={require('../1.png')}
                             alt="Segundo slide"
                         />
                         <Carousel.Caption>
-                            <h3 className="h3Inicio">Não se preocupe com atendimentos.</h3>
+                            <h3 className="h3Inicio">Seu negócio mais prático.</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
