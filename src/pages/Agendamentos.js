@@ -13,46 +13,47 @@ import Navbar from '../components/Navbar';
 function Agendamentos() {
 
     var [id, setId] = useState('');
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([{}]);
     const [date, setDate] = useState('');
 
     function settarData(event) {
         setDate(event.target.value);
-      }
+    }
 
     function settarID(event) {
         setId(event.target.value);
     }
 
-//https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/_all_docs
+    //https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/_all_docs
 
-//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?_id=1
+    //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?_id=1
 
-//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=2023-03-03
+    //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=2023-03-03
 
-//https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?rows=total_rows
+    //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?rows=total_rows
 
-    function pesquisar(){
-        if (id == '') {
-            fetch("https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=" + date)
-                .then((res) => res.json())
-                .then((dadosApi) => setData(dadosApi))
-                .catch((erro) => console.log(erro));
-            console.log("Pesquisa realizada com sucesso " + id)
-        } else if (date == '') {
-            fetch("https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/" + id)
-                .then((res) => res.json())
-                .then((dadosApi) => setData(dadosApi))
-                .catch((erro) => console.log(erro));
-                console.log(data);
-            console.log("Pesquisa realizada com sucesso " + id)
-        } else{
-            fetch("https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?rows=total_rows")
-                .then((res) => res.json())
-                .then((dadosApi) => setData(dadosApi))
-                .catch((erro) => console.log(erro));
-            console.log("Pesquisa realizada com sucesso " + id)
+    function pesquisar() {
+        var url = "https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?"
+
+        if (id != '') {
+            url = url + "_id=" + id
+        } else if (date != '') {
+            url = url + "user_date=" + date
+        } else if (id == '' && date == '') {
+            alert("Preencha pelo menos um dos campos")
         }
+        fetch(url)
+            .then((res) => res.json())
+            .then((dadosApi) => {
+                if (dadosApi.filtro_data) {
+                    setData(Object.values(dadosApi.filtro_data))
+                } else {
+                    setData(Object.values(dadosApi))
+                }
+            })
+            .catch((erro) => console.log(erro));
+        console.log("Pesquisa realizada com sucesso " + date)
+        console.log("esse é o usado na tabela" + Object.values(data));
     }
 
     return (
@@ -69,17 +70,17 @@ function Agendamentos() {
                     </Col>
                     <Col>
                         <Form.Label>DATA DE AGENDAMENTO</Form.Label>
-                        <Form.Control value={date} type="date" onChange={settarData}/>
+                        <Form.Control value={date} type="date" onChange={settarData} />
                     </Col>
                     <Col>
-                        <Button variant="primary" onClick={pesquisar}>Pesquisar</Button>
+                        <Button className='btnAg' variant="primary" onClick={pesquisar}>Pesquisar</Button>
                     </Col>
                 </Row>
             </Form>
             <Table striped bordered hover>
                 <thead>
-                    <tr> 
-                    <th>ID</th>
+                    <tr>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Data do agendamento</th>
                         <th>Categoria</th>
@@ -91,17 +92,19 @@ function Agendamentos() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr key={data.id}>
-                    <td>{data._id}</td>
-                            <td>{data.user_name}</td>
-                            <td>{data.user_date}</td>
-                            <td>{data.user_selecao_categoria}</td>
-                            <td>{data.user_selecao_servico2}</td>
-                            <td>{data.user_time}</td>
-                            <td>{data.origem}</td>
-                            <td>{data.channel}</td>
-                            <td>{data.user_confirma_agendamento}</td>
+                    {data.map((item) => (
+                        <tr>
+                            <td>{item?._id}</td>
+                            <td>{item?.user_name}</td>
+                            <td>{item?.user_date}</td>
+                            <td>{item?.user_selecao_categoria}</td>
+                            <td>{item?.user_selecao_servico2}</td>
+                            <td>{item?.user_time}</td>
+                            <td>{item?.origem}</td>
+                            <td>{item?.channel}</td>
+                            <td>{item?.user_confirma_agendamento}</td>
                         </tr>
+                    ))}
                 </tbody>
             </Table>
 
