@@ -16,24 +16,26 @@ function MinhaConta() {
     const [senha1, setSenha1] = useState('');
     const [senha2, setSenha2] = useState('');
 
+     function handleSubmit(event) {
+            event.preventDefault();
 
-/*     function handleSubmit(event) {
-        event.preventDefault();
-        const data = {
-            senha1,
-            senha2
-        }
-        if (data.login === LoginAcess.login && data.senha === LoginAcess.senha) {
-            alert(`Access Permitido! Seja bem vindo ` + LoginAcess.nome);
-            window.location.href = '/inicio';
-        } else {
-            alert("Access Negado, tente novamente ou crie outra conta")
-        }
-    } */
+            if (senha1 === "" || senha2 === "") {
+                alert(`Para alterar a senha, você deve preencher os campos de nova senha`);
+            }
+            else if (senha1 === senha2) {
+                LoginAcess.senha = senha1
+                setSenha1("")
+                setSenha2("")
+                alert(`Senha alterada com sucesso!`);
+
+            } else {
+                alert("Alteração cancelada, digite corretamente a nova senha")
+            }
+        } 
 
     function settarSenha1(event) {
         setSenha1(event.target.value);
-      }
+    }
 
     function settarSenha2(event) {
         setSenha2(event.target.value);
@@ -51,21 +53,35 @@ function MinhaConta() {
                 className="tabMinhaConta"
             >
                 <Tab eventKey="home" title="Alterar senha" className='tabContent'>
-                    <Form className='formLogin'>
+                    <Form className='formMinhaConta'>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Control type="password" placeholder="Digite sua nova senha" value={senha1} onChange={settarSenha1} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Control type="password" placeholder="Repita sua nova senha" value={senha2} onChange={settarSenha2} />
+                            <Form.Control type="password" placeholder="Digite novamente sua nova senha" value={senha2} onChange={settarSenha2} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         </Form.Group>
-                        <Button variant="primary" type="submit" onClick={''}>Alterar senha</Button>
+                        <Button variant="primary" type="submit" onClick={handleSubmit}>Alterar senha</Button>
                     </Form>
                 </Tab>
                 <Tab eventKey="profile" title="Meu plano" className='tabContent'>
-                    Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.
+                    <p>
+                        Serviço de chatbot de atendimento e agendamento! Com este plano de assinatura, você tem acesso a uma solução completamente automatizada e prática para gerenciar seu atendimento ao cliente e agendar serviços.
+                    </p>
+                    <p>
+                        Valor da assinatura R$ 1000,00 por mês, nosso chatbot oferece uma experiência fácil e eficiente para seus clientes, garantindo um atendimento ágil e preciso em todos os momentos.
+                    </p>
+                    <p>
+                        Com nosso chatbot, seus clientes poderão agendar serviços com apenas alguns cliques, sem a necessidade de ligar para a empresa ou enviar e-mails. Além disso, a chatbot é capaz de responder perguntas frequentes sobre sua empresa e serviços, tornando o processo de atendimento ainda mais prático.
+                    </p>
+                    <p>
+                        Com a tecnologia de inteligência artificial avançada da IBM, nosso chatbot é capaz de entender a linguagem natural e responder de forma clara e precisa, tornando a experiência do cliente ainda mais satisfatória.
+                    </p>
+                    <p>
+                        Em resumo, nosso plano de assinatura de chatbot de atendimento e agendamento oferece uma solução prática e automatizada para gerenciar seu atendimento ao cliente e agendar serviços. Você terá acesso a uma tecnologia de inteligência artificial avançada que tornará a experiência do cliente mais satisfatória e eficiente. Não perca a oportunidade de otimizar seu atendimento e aumentar a satisfação dos seus clientes.
+                    </p>
                 </Tab>
             </Tabs>
         </>

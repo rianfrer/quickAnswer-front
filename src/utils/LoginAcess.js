@@ -1,4 +1,4 @@
-const LoginAcess = {
+var LoginAcess = {
     nome: "Admin",
     login: "admin",
     senha: "admin"
