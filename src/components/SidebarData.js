@@ -26,7 +26,7 @@ export const SidebarData = [
     },
     {
         title: 'Configurações',
-        path: '/configuracoes',
+        path: '',
         icon: <BiIcons.BiCog />,
         cName: 'nav-text'
     },
