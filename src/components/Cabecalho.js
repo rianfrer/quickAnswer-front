@@ -16,7 +16,7 @@ function Cabecalho() {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link">
-                        <Link to={''}>Minha conta </Link>
+                        <Link to={'/minhaConta'}>Minha conta </Link>
                     </a>
                 </li>
                 <li class="nav-item">

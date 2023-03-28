@@ -2,7 +2,7 @@ import '../styles/Agendamentos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { useState } from 'react';
-import { Alert, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
