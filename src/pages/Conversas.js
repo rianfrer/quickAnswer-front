@@ -10,10 +10,10 @@ function Conversas() {
         <Navbar />
             <div>
                 <ChatEngine
-                    height="100vh"
-                    projectID='9cef1784-6789-4e99-bf7b-3f4106620650'
-                    userName='admin'
-                    userSecret='1234'
+                    height="85vh"
+                    projectID='078ffa28-018c-4690-b387-0e1c545186c1'
+                    userName='daniel'
+                    userSecret='admin'
                 />
             </div>
         </>
