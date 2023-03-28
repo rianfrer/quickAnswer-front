@@ -14,7 +14,7 @@ function Agendamentos() {
 
     var [id, setId] = useState('');
     const [data, setData] = useState([{}]);
-    const [date, setDate] = useState('');
+    var [date, setDate] = useState('');
 
     function settarData(event) {
         setDate(event.target.value);
@@ -24,17 +24,14 @@ function Agendamentos() {
         setId(event.target.value);
     }
 
-    //https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/_all_docs
-
-    //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?_id=1
-
-    //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=2023-03-03
-
-    //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?rows=total_rows
-
+    function limpar() {
+        setId("")
+        setDate("")
+    }
+    
     function pesquisar() {
         var url = "https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?"
-
+        
         if (id != '') {
             url = url + "_id=" + id
         } else if (date != '') {
@@ -43,21 +40,21 @@ function Agendamentos() {
             alert("Preencha pelo menos um dos campos")
         }
         fetch(url)
-            .then((res) => res.json())
-            .then((dadosApi) => {
-                if (dadosApi.filtro_data) {
+        .then((res) => res.json())
+        .then((dadosApi) => {
+            if (dadosApi.filtro_data) {
                     setData(Object.values(dadosApi.filtro_data))
                 } else {
                     setData(Object.values(dadosApi))
                 }
             })
             .catch((erro) => console.log(erro));
-        console.log("Pesquisa realizada com sucesso " + date)
-        console.log("esse é o usado na tabela" + Object.values(data));
-    }
-
-    return (
-        <>
+            console.log("Pesquisa realizada com sucesso " + date)
+            console.log("esse é o usado na tabela" + Object.values(data));
+        }
+        
+        return (
+            <>
             <Navbar />
             <div className='cabecalhoAg'>
                 <h1>Agendamentos</h1>
@@ -74,6 +71,7 @@ function Agendamentos() {
                     </Col>
                     <Col>
                         <Button className='btnAg' variant="primary" onClick={pesquisar}>Pesquisar</Button>
+                        <Button className='btnAg' variant="secondary" onClick={limpar}>Limpar</Button>
                     </Col>
                 </Row>
             </Form>
@@ -110,7 +108,7 @@ function Agendamentos() {
 
         </>
 
-    )
+)
 }
 
 export default Agendamentos;
@@ -126,21 +124,29 @@ const apiKey = 'sua_chave_de_api';
 
 // configura as opções da requisição
 const options = {
-  headers: {
-    'Authorization': `Bearer ${apiKey}`,
-    'Content-Type': 'application/json'
-  },
-  data: {
-    chave1: 'valor1',
-    chave2: 'valor2'
-  }
+    headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+    },
+    data: {
+        chave1: 'valor1',
+        chave2: 'valor2'
+    }
 };
 
 // faz a requisição HTTP POST para a API
 axios.post(apiUrl, options)
-  .then(response => {
+.then(response => {
     console.log(response.data);
   })
   .catch(error => {
-    console.error(error);
-  }); */
+      console.error(error);
+    }); */
+    
+        //https://8f28faa5-e080-4c10-aefd-ccff50aa3382-bluemix.cloudantnosqldb.appdomain.cloud/agendamento_barber_assist/_all_docs
+    
+        //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?_id=1
+    
+        //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?user_date=2023-03-03
+    
+        //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?rows=total_rows
