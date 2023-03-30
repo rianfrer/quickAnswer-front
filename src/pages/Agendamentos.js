@@ -9,12 +9,15 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
 import Navbar from '../components/Navbar';
+import Carregando from '../components/Carregando';
+
 
 function Agendamentos() {
 
     var [id, setId] = useState('');
     const [data, setData] = useState([{}]);
     var [date, setDate] = useState('');
+    const [loading, setLoading] = useState(false);
 
     function settarData(event) {
         setDate(event.target.value);
@@ -29,7 +32,7 @@ function Agendamentos() {
         setDate("")
     }
     
-    function pesquisar() {
+    async function pesquisar() {
         var url = "https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?"
         
         if (id != '') {
@@ -39,7 +42,10 @@ function Agendamentos() {
         } else if (id == '' && date == '') {
             alert("Preencha pelo menos um dos campos")
         }
-        fetch(url)
+
+        setLoading(true);
+
+       await fetch(url)
         .then((res) => res.json())
         .then((dadosApi) => {
             if (dadosApi.filtro_data) {
@@ -51,6 +57,9 @@ function Agendamentos() {
             .catch((erro) => console.log(erro));
             console.log("Pesquisa realizada com sucesso " + date)
             console.log("esse é o usado na tabela" + Object.values(data));
+        
+            setLoading(false);
+        
         }
         
         return (
@@ -71,6 +80,7 @@ function Agendamentos() {
                     </Col>
                     <Col>
                         <Button className='btnAg' variant="primary" onClick={pesquisar}>Pesquisar</Button>
+                        {loading && <Carregando />}
                         <Button className='btnAg' variant="secondary" onClick={limpar}>Limpar</Button>
                     </Col>
                 </Row>
