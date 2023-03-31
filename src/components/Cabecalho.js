@@ -16,10 +16,10 @@ function Cabecalho(props) {
                     <ul class="nav justify-content-end">
                         <li class="nav-item">
                             <a class="nav-link active">
-                                <Link to={'/inicio'}>Olá, {LoginAcess.nome}</Link>
+                                <Link to={'/inicio'}>{LoginAcess.nome}</Link>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item">   
                             <a class="nav-link">
                                 <Link to={'/minhaConta'}>Minha conta </Link>
                             </a>
