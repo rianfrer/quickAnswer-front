@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row';
 
 import Navbar from '../components/Navbar';
 import Carregando from '../components/Carregando';
+import Cabecalho from '../components/Cabecalho';
 
 
 function Agendamentos() {
@@ -65,9 +66,7 @@ function Agendamentos() {
         return (
             <>
             <Navbar />
-            <div className='cabecalhoAg'>
-                <h1>Agendamentos</h1>
-            </div>
+            <Cabecalho titulo="Agendamentos"/>
             <Form className='filtroAg'>
                 <Row>
                     <Col>

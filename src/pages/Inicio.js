@@ -2,6 +2,7 @@ import React from "react";
 import '../styles/Inicio.css';
 import Navbar from '../components/Navbar';
 import Carousel from 'react-bootstrap/Carousel';
+import Cabecalho from '../components/Cabecalho';
 
 
 
@@ -9,9 +10,8 @@ function Inicio() {
     return (
         <>
             <Navbar />
-            <div className='inicio'>
-                <h1>Bem vindo ao <spam className="spam2">Quick</spam ><spam className="spam1">Answer</spam></h1>
-            </div>
+            <Cabecalho titulo="Bem vindo ao QuickAnswer"/>
+   
             <div className="carouselInicio">
                 <Carousel variant="dark">
                     <Carousel.Item>

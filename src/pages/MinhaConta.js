@@ -6,9 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import LoginAcess from '../utils/LoginAcess';
-
-
-
+import Cabecalho from '../components/Cabecalho';
 import Navbar from '../components/Navbar';
 
 function MinhaConta() {
@@ -44,9 +42,7 @@ function MinhaConta() {
     return (
         <>
             <Navbar />
-            <div className='cabecalhoAg'>
-                <h1>Minha conta</h1>
-            </div>
+            <Cabecalho titulo="Minha Conta"/>
             <Tabs
                 defaultActiveKey="home"
                 id="uncontrolled-tab-example"

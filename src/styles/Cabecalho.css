@@ -1,3 +1,19 @@
+
+.cabecalhoAg h1{
+    width: 500px;
+    margin: 5vh 0 5vh 5%;
+}
+
+.cabecalho{
+    display: flex;
+    /*border: solid red;*/
+    margin: 2vh 0 2vh 20%;
+    width: 75%;
+    height: 10vh;
+    align-items: center;
+}
 .menuSuperior{
-    margin-top: 5vh;
+    position: fixed;
+    align-items: center;
+    margin: 5vh 0 5vh 60%;
 }
