@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Navbar from '../components/Navbar';
 import Carregando from '../components/Carregando';
 import Cabecalho from '../components/Cabecalho';
+import { json } from 'react-router-dom';
 
 
 function Agendamentos() {
@@ -31,8 +32,9 @@ function Agendamentos() {
     function limpar() {
         setId("")
         setDate("")
+        setData([])
     }
-    
+    //https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?all_docs
     async function pesquisar() {
         var url = "https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?"
         
@@ -41,7 +43,7 @@ function Agendamentos() {
         } else if (date != '') {
             url = url + "user_date=" + date
         } else if (id == '' && date == '') {
-            alert("Preencha pelo menos um dos campos")
+            url = url + "all_docs"
         }
 
         setLoading(true);
@@ -50,10 +52,14 @@ function Agendamentos() {
         .then((res) => res.json())
         .then((dadosApi) => {
             if (dadosApi.filtro_data) {
-                    setData(Object.values(dadosApi.filtro_data))
-                } else {
-                    setData(Object.values(dadosApi))
-                }
+                setData(Object.values(dadosApi.filtro_data))
+            } 
+            else if (dadosApi.all_docs) {
+                setData(Object.values(dadosApi.all_docs))
+            }
+            else {
+                setData(Object.values(dadosApi))
+            }
             })
             .catch((erro) => console.log(erro));
             console.log("Pesquisa realizada com sucesso " + date)
