@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { BsCalendarX } from 'react-icons/bs';
 
 import Navbar from '../components/Navbar';
 import Carregando from '../components/Carregando';
@@ -15,11 +16,12 @@ import { json } from 'react-router-dom';
 
 
 function Agendamentos() {
-
+    
     var [id, setId] = useState('');
     const [data, setData] = useState([{}]);
     var [date, setDate] = useState('');
     const [loading, setLoading] = useState(false);
+    const [selecionados, setSelecionados] = useState([]);
 
     function settarData(event) {
         setDate(event.target.value);
@@ -68,6 +70,20 @@ function Agendamentos() {
             setLoading(false);
         
         }
+
+
+        const handleCheckboxChange = (event, itemId) => {
+          if (event.target.checked) {
+            setSelecionados([...selecionados, itemId]);
+          } else {
+            setSelecionados(selecionados.filter((id) => id !== itemId));
+          }
+        };
+      
+        const handleDelete = () => {
+          // Aqui você pode implementar a lógica para excluir os registros selecionados
+          console.log('Registros selecionados:', selecionados);
+        };
         
         return (
             <>
@@ -93,6 +109,7 @@ function Agendamentos() {
             <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th><input type='checkbox'></input></th>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Data do agendamento</th>
@@ -102,11 +119,19 @@ function Agendamentos() {
                         <th>Origem</th>
                         <th>Canal de prospecção</th>
                         <th>Confirmado</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((item) => (
                         <tr>
+                            <td>
+                            <input
+                                type="checkbox"
+                                onChange={(e) => handleCheckboxChange(e, item._id)}
+                                checked={selecionados.includes(item._id)}
+                            />
+                            </td>
                             <td>{item?._id}</td>
                             <td>{item?.user_name}</td>
                             <td>{item?.user_date}</td>
@@ -116,6 +141,7 @@ function Agendamentos() {
                             <td>{item?.origem}</td>
                             <td>{item?.channel}</td>
                             <td>{item?.user_confirma_agendamento}</td>
+                            <td> <BsCalendarX onClick={handleDelete} /> </td>
                         </tr>
                     ))}
                 </tbody>
