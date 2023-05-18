@@ -80,10 +80,11 @@ function Agendamentos() {
           }
         };
       
-        const handleDelete = () => {
-          // Aqui você pode implementar a lógica para excluir os registros selecionados
-          console.log('Registros selecionados:', selecionados);
-        };
+        const handleDelete = (id) => {
+           // setData((prevData) => prevData.filter((item) => item._id !== id));
+            console.log(id)
+            
+          };
         
         return (
             <>
@@ -141,7 +142,7 @@ function Agendamentos() {
                             <td>{item?.origem}</td>
                             <td>{item?.channel}</td>
                             <td>{item?.user_confirma_agendamento}</td>
-                            <td> <BsCalendarX onClick={handleDelete} /> </td>
+                            <td> <BsCalendarX onClick={() => handleDelete(item._id)} /> </td>
                         </tr>
                     ))}
                 </tbody>
