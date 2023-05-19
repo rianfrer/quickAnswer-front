@@ -12,7 +12,6 @@ import { BsCalendarX } from 'react-icons/bs';
 import Navbar from '../components/Navbar';
 import Carregando from '../components/Carregando';
 import Cabecalho from '../components/Cabecalho';
-import { json } from 'react-router-dom';
 
 
 function Agendamentos() {
@@ -82,9 +81,24 @@ function Agendamentos() {
       
         const handleDelete = (id) => {
            // setData((prevData) => prevData.filter((item) => item._id !== id));
-            console.log(id)
-            
+           if (alert("Deseja realmente deletar este agendamento?")) {
+  //             setLoading(true);
+    //           deletar(id)
+      //         setLoading(false);
+               console.log(id)
+           }
           };
+
+        async function deletar(id){
+            var url = "https://us-south.functions.appdomain.cloud/api/v1/web/75a6c58b-8400-4fff-aac1-11d1bc743b16/default/crud_prjbarber.json?"
+            url = url + "delete_id=" + id
+           await fetch(url)
+            .then((res) => {
+                    console.log(res);
+                }); 
+
+            console.log("O delete do id " + id +" deu certo");
+        }
         
         return (
             <>
